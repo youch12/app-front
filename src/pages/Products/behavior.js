@@ -1,6 +1,14 @@
-export const LIST_PRODUCTS_BEGIN = "LIST_PRODUCTS_BEGIN";
-export const LIST_PRODUCTS_SUCCESS = "LIST_PRODUCTS_SUCCESS";
-export const LIST_PRODUCTS_ERROR = "LIST_PRODUCTS_ERROR";
+import { get, getActionTypes } from "config/api";
+
+const LIST_PRODUCTS_ACTIONS = getActionTypes("LIST_PRODUCTS");
+
+// Action creators
+export function loadProductsList() {
+
+    return (dispatch) => {
+        dispatch(get("api/products", LIST_PRODUCTS_ACTIONS));
+    };
+}
 
 const initialState = {
     products: [],
@@ -10,23 +18,23 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case LIST_PRODUCTS_BEGIN:
+        case LIST_PRODUCTS_ACTIONS.begin:
             return {
-                ...state,
+                products: [],
                 loading: true,
+                errorOccured: false,
             };
 
-        case LIST_PRODUCTS_SUCCESS:
+        case LIST_PRODUCTS_ACTIONS.success:
             return {
-                ...state,
                 loading: false,
                 errorOccured: false,
-                products: action.data,
+                products: action.response,
             };
 
-        case LIST_PRODUCTS_ERROR:
+        case LIST_PRODUCTS_ACTIONS.error:
             return {
-                ...state,
+                products: [],
                 loading: false,
                 errorOccured: true,
             };
