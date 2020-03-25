@@ -17,13 +17,7 @@ export function ProductsPage() {
 
     useEffect(() => {
         store.dispatch({ type: LIST_PRODUCTS_BEGIN });
-        axios.get('http://localhost:8081/api/products',
-
-            {
-                headers: {
-                    Authorization: 'Bearer ' + KeycloakService.getToken()
-                }
-            })
+        axios.get('api/products')
             .then((response) => {
                 // handle success
                 store.dispatch({ type: LIST_PRODUCTS_SUCCESS, data: response.data });
@@ -37,7 +31,6 @@ export function ProductsPage() {
 
 
     }, []);
-
 
     return <div><h2>Products Page</h2></div>
 

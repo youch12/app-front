@@ -4,9 +4,13 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from 'store';
 import KeycloakService from 'keycloak'
+import configureAxiosHandler from 'config/axios';
 import * as serviceWorker from './serviceWorker';
 
 const rootElement = document.getElementById('root')
+
+configureAxiosHandler();
+
 const renderApp = () => ReactDOM.render(
   <Provider store={store}>
     <App />
