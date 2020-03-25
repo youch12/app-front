@@ -146,7 +146,6 @@ const ProductForm = props => {
             </div>
             <div className={classes.formField}>
                 <Field name="productImageUrl" component={renderTextField} label="Image Url"
-
                     multiline
                     rowsMax="4"
                     margin="normal" />

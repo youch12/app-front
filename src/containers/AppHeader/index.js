@@ -25,6 +25,9 @@ export function AppHeader(props) {
         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
           ECOM-SITE
           </Typography>
+        <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+          {props.userInfos.fullName}
+        </Typography>
         <IconButton
           className="toClick"
           color="inherit" onClick={() => props.removeNotification()}>
@@ -39,7 +42,8 @@ export function AppHeader(props) {
 
 export function mapStateToProps(state) {
   return {
-    count: state.notifications.notificationCount
+    count: state.notifications.notificationCount,
+    userInfos: state.userInfos,
   }
 }
 
