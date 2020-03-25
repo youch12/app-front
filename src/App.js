@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router } from "react-router-dom";
+import classes from './App.module.css';
+import Copyright from 'components/Copyright'
+import Container from '@material-ui/core/Container';
+import MainLayout from 'containers/MainLayout';
+import AppHeader from 'containers/AppHeader';
+import AppSideBar from 'containers/AppSideBar';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Router>
+      <div className={classes.root}>
+        <AppHeader />
+        <AppSideBar />
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Container maxWidth="lg" className={classes.container}>
+            <MainLayout />
+            <Copyright />
+          </Container>
+        </main>
+      </div>
+    </Router>
+  )
+};
+
 
 export default App;
