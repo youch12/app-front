@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import notificationsReducer from 'containers/AppHeader/behavior';
 import productsListPageReducer from 'pages/Products/ListPage/behavior';
+import productsAddPageReducer from 'pages/Products/AddPage/behavior';
 
 import userInfosReducer from 'keycloak/behavior';
 
@@ -13,6 +14,7 @@ const node1reducer = combineReducers({
     form: formReducer,
     userInfos: userInfosReducer,
     productsListPage: productsListPageReducer,
+    productsAddPage: productsAddPageReducer,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
