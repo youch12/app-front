@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addProduct, resetPage } from './behavior';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Alert from '@material-ui/lab/Alert';
+import * as selectors from './selectors';
 
 
 export function AddPage(props) {
@@ -15,8 +16,11 @@ export function AddPage(props) {
 
 
     useEffect(() => {
-        if (props.creationSucces)
+        console.log("Triggered UseEffect with ", props)
+        if (props.creationSucces) {
+            console.log("Now to redirect")
             props.history.push("/");
+        }
 
     }, [props.creationSucces])
 
@@ -43,14 +47,11 @@ export function AddPage(props) {
         </div>);
 }
 
-const mapStateToProps = (state) => {
-    const { creationLoading,
-        creationSucces,
-        creationError, } = state.productsAddPage;
+export const mapStateToProps = (state) => {
     return {
-        creationLoading,
-        creationSucces,
-        creationError,
+        creationLoading: selectors.isProcessingCreation(state),
+        creationSucces: selectors.isCreationSuccess(state),
+        creationError: selectors.hasErrorOcurred(state),
     }
 }
 

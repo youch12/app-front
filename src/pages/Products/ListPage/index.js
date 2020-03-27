@@ -46,7 +46,7 @@ export function ProductsPage(props) {
 
 
 const mapStateToProps = (state) => {
-    const { products, loading, errorOccured } = state.productsListPage;
+    const { products, loading, errorOccured } = state.pages.products.listPage;
     return {
         products, loading, errorOccured
     }

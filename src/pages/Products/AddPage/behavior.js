@@ -1,11 +1,10 @@
 import { post, getActionTypes } from "config/api";
 
-const ADD_PRODUCT_ACTIONS = getActionTypes("ADD_PRODUCT_ACTIONS");
-const RESET_FORM_PAGE = "RESET_FORM_PAGE";
+export const ADD_PRODUCT_ACTIONS = getActionTypes("ADD_PRODUCT_ACTIONS");
+export const RESET_FORM_PAGE = "RESET_FORM_PAGE";
 
 // Action creators
 export function addProduct(values) {
-
     return (dispatch) => {
         dispatch(post("api/products", values, ADD_PRODUCT_ACTIONS));
     };
