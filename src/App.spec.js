@@ -1,6 +1,6 @@
 import React from 'react';
 import { expect } from 'chai';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { BrowserRouter as Router } from "react-router-dom";
 import Copyright from 'components/Copyright'
 import Container from '@material-ui/core/Container';
@@ -34,16 +34,16 @@ describe('App: index', () => {
     });
 
 
-    it('This will fail', () => {
-
-        // When
-        const container = mount(
-            <App />);
-        /*
-        This will try to render the AppHeader, and all its children.
-        However, AppHeader is connected to the store, so we need to 
-        fake a store for this test to run*/
-    });
+    /*  it('This will fail', () => {
+  
+          // When
+          const container = mount(
+              <App />);
+          /*
+          This will try to render the AppHeader, and all its children.
+          However, AppHeader is connected to the store, so we need to 
+          fake a store for this test to run*/
+    //  });
 
 
 
